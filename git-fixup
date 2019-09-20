@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+##
+## Kindof like amend but works for older commits
+##
+
+git_ref=$1
+shift
+
+target_sha=$(git rev-parse $git_ref)
+git commit --fixup=$target_sha $@ 
+EDITOR=true git rebase --interactive --autostash --autosquash $target_sha^
+

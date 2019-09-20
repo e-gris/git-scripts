@@ -1,0 +1,7 @@
+#!/bin/bash -eu
+##
+## List the files changed in $git_ref
+##
+git_ref=${1:-HEAD}
+
+git diff-tree --no-commit-id --name-only -r $git_ref

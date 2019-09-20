@@ -1,0 +1,8 @@
+#!/bin/bash -eu
+##
+## List the files changed in $git_ref
+##
+
+current_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+
+git push --set-upstream origin $current_branch

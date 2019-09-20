@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+## List file changes in a given commit
+script=$(basename $0)
+
+ref="$1"
+merge_sha=$(git rev-list -1 --merges $ref~1..$ref)
+if [[ ! -z $merge_sha ]]; then
+  echo "$script: $ref is a merge commit. No files changed." 1>&2
+  exit 0
+fi
+
+git diff-tree --no-commit-id --name-status -r "$ref"

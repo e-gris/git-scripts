@@ -1,0 +1,5 @@
+#!/bin/bash
+
+upstream=origin/${1:-master}
+git rebase -i $upstream
+
