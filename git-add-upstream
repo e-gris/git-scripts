@@ -5,5 +5,5 @@ upstream_organization=${1:-puppetlabs}
 origin=$(git remote get-url origin)
 upstream=${origin//e-gris/$upstream_organization}
 
-git remote add upstream $upstream
+git remote --verbose add upstream $upstream
 
