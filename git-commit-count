@@ -10,4 +10,4 @@ if [[ -z $file_name || ! -r $file_name ]]; then
   exit 1
 fi
 
-git rev-list --count $(git log --follow -1 --pretty=%H filename)..HEAD
+git rev-list --count $(git log --follow -1 --pretty=%H -- $file_name)..HEAD
