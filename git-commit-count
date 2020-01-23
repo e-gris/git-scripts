@@ -1,0 +1,13 @@
+#!/bin/bash -eu
+##
+## Shows the number of commits in this repo since the last time <file> changed.
+##
+
+file_name=${1:-}
+
+if [[ -z $file_name || ! -r $file_name ]]; then
+  echo "Usage: git commit-count <file>"
+  exit 1
+fi
+
+git rev-list --count $(git log --follow -1 --pretty=%H filename)..HEAD
