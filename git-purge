@@ -5,7 +5,7 @@ git fetch --prune --all
 stuff_to_delete=$(git branch -vv | awk '/: gone]/{ print $1 }')
 
 if [[ -z $stuff_to_delete ]]; then
-  echo "Nothing to delete"
+  echo "No local branches to delete."
   exit 0
 fi
 
