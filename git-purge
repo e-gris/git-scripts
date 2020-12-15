@@ -1,5 +1,5 @@
 #!/bin/bash -e
-echo Deleting local branches that were removed in remotes
+echo Deleting local branches that were removed in remotes.
 
 git fetch --prune --all
 stuff_to_delete=$(git branch -vv | awk '/: gone]/{ print $1 }')
