@@ -7,6 +7,7 @@ ifeq ($(UNAME),Darwin)
 endif
 
 install:
+	- echo $(UNAME)
 	- git commit -a
 	- git push
 	$(INSTALL) --verbose --preserve-timestamps \
