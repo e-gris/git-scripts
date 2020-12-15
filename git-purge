@@ -6,7 +6,7 @@ stuff_to_delete=$(git branch -vv | awk '/: gone]/{ print $1 }')
 
 if [[ -z $stuff_to_delete ]]; then
   echo "Nothing to delete"
-  return
+  exit 0
 fi
 
 echo "$stuff_to_delete"  | xargs git branch --delete --force
