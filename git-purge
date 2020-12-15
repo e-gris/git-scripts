@@ -1,4 +1,12 @@
 #!/bin/bash -e
 echo Deleting local branches that were removed in remotes
-git fetch --prune --all 
-git branch -vv | awk '/: gone]/{print $1}' | xargs git branch --delete --force
+
+git fetch --prune --all
+stuff_to_delete=$(git branch -vv | awk '/: gone]/{ print $1 }')
+
+if [[ -z $stuff_to_delete ]]; then
+  echo "Nothing to delete"
+  return
+fi
+
+echo "$stuff_to_delete"  | xargs git branch --delete --force
