@@ -1,8 +1,13 @@
 SCRIPTS := $(wildcard git-*)
 DESTINATION_DIRECTORY := $(HOME)/bin
 
+INSTALL := install
+ifeq ($(UNAME),Darwin)
+  INSTALL := ginstall
+endif
+
 install:
 	- git commit -a
 	- git push
-	install --verbose --preserve-timestamps \
+	$(INSTALL) --verbose --preserve-timestamps \
 	--target-directory=$(DESTINATION_DIRECTORY) $(SCRIPTS)
